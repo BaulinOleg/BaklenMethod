@@ -1,0 +1,213 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+@use "sass:list";
+
+
+.circle-slider-container {
+  position: relative;
+  width: 100%;
+  max-width: 818px;
+  min-height: 818px;
+  margin-left: clamp(-25rem, -94.9454rem + 109.2896vw, 0rem);
+  @include flex-center;
+
+  @include tablet {
+    max-width: 560px;
+    min-height: 560px;
+    margin-left: clamp(-12.5rem, -50rem + 78.125vw, 0rem);
+  }
+
+  @include mobile {
+    margin-left: clamp(-23.75rem, -37.6895rem + 52.4781vw, -12.5rem);
+  }
+
+  @include below-mobile {
+    max-width: 460px;
+    min-height: 460px;
+    margin-left: -288px;
+  }
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &::after {
+    content: url("/images/aspects/polygon.png");
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -200px;
+
+    @include tablet {
+      right: -340px;
+    }
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  @include tablet {
+    transform: scale(0.6845);
+  }
+
+  @include below-mobile {
+    transform: scale(0.5624);
+  }
+
+
+  &__center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    font-weight: 500;
+    font-size: 60px;
+    color: $color-violet-dark;
+    background-color: $color-light-pink;
+    @include flex-center;
+  }
+
+  &__petal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+
+  &__petal-inner {
+    position: relative;
+    max-width: 360px;
+    margin-left: 80px;
+  }
+
+  &__petal-title {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 2px;
+    width: 128px;
+    height: 117px;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    font-weight: 700;
+    font-size: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+    mask-image: url('/masks/petal-title-mask.svg');
+    mask-size: cover;
+    mask-repeat: no-repeat;
+    mask-position: left;
+
+    -webkit-mask-image: url('/masks/petal-title-mask.svg');
+    -webkit-mask-size: cover;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: left;
+  }
+
+  &__petal-list {
+    position: relative;
+  }
+
+  &__petal-item {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 2rem;
+    width: 334px;
+    height: 94px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 128px;
+    padding-right: 24px;
+    text-align: end;
+    text-wrap: nowrap;
+    font-family: $font-second;
+    font-weight: 700;
+    font-size: 22px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+    mask-image: url('/masks/petal-mask.svg');
+    mask-size: auto;
+    mask-repeat: no-repeat;
+    mask-position: left;
+
+    -webkit-mask-image: url('/masks/petal-mask.svg');
+    -webkit-mask-size: auto;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: left;
+  }
+
+  &__petal-item:first-child {
+    left: 1.8rem;
+    transform-origin: 0 50%;
+    transform: translateY(-67.5%) rotate(-15deg);
+  }
+
+  &__petal-item:last-child {
+    left: 1.8rem;
+    transform-origin: 0 50%;
+    transform: translateY(-32.5%) rotate(15deg);
+  }
+}
+
+.circle-slider-btn-prev,
+.circle-slider-btn-next {
+  position: absolute;
+  right: -64px;
+  transform: rotate(90deg);
+  color: $color-violet;
+
+  @include mobile {
+    right: -88px;
+  }
+}
+
+.circle-slider-btn-prev {
+  top: 15%;
+
+  @include mobile {
+    top: 12%;
+  }
+}
+
+.circle-slider-btn-next {
+  bottom: 15%;
+
+  @include mobile {
+    bottom: 12%;
+  }
+}
+
+@for $i from 1 through list.length($petal-colors) {
+  $base-color: list.nth($petal-colors, $i);
+  $default-bg: rgba($base-color, 0.6);
+  $first-bg: rgba($base-color, 0.9);
+  $last-bg: rgba($base-color, 0.4);
+
+  .slider__petal--#{$i} {
+    .slider__petal-title {
+      background-color: $base-color;
+    }
+
+    .slider__petal-item {
+      background-color: $default-bg;
+
+      &:first-child {
+        background-color: $first-bg;
+      }
+
+      &:last-child {
+        background-color: $last-bg;
+      }
+    }
+  }
+}

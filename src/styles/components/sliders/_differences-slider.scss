@@ -1,0 +1,198 @@
+@use "../../variables" as *;
+@use "../../mixins" as *;
+
+
+.differences-slider {
+  width: 100%;
+  max-width: 610px;
+
+  @include mobile {
+    display: none;
+  }
+
+  &__wrapper {
+    position: relative;
+
+    & .swiper {
+      height: 435px;
+
+      @include tablet {
+        height: 590px;
+      }
+    }
+  }
+
+  &__btn-prev,
+  &__btn-next {
+    color: $color-dark-red;
+    z-index: 100;
+
+    @include pointer-fine-hover {
+      &:hover {
+        color: $color-red;
+      }
+    }
+  }
+
+  &__btn-prev {
+    top: -32px;
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg);
+
+    @include laptop {
+      top: -24px;
+    }
+
+    @include tablet {
+      top: -18px;
+    }
+  }
+
+  &__btn-next {
+    bottom: -32px;
+    right: 50%;
+    transform: translateX(50%) rotate(90deg);
+
+    @include laptop {
+      bottom: -24px;
+    }
+
+    @include tablet {
+      bottom: -18px;
+    }
+  }
+}
+
+.differences-slide {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 44px 36px;
+  background-repeat: no-repeat;
+  background-size: auto, 100% 100%, 100% 100%;
+  background-position: right bottom, center, center;
+  border-radius: $border-radius-medium;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 113px;
+    height: 10px;
+    background-image: url("/images/logotype/logo-s.png");
+    position: absolute;
+    right: 36px;
+    bottom: 44px;
+
+    @include laptop {
+      right: 32px;
+    }
+
+    @include tablet {
+      right: 24px;
+    }
+  }
+
+  @include laptop {
+    padding-inline: 32px;
+  }
+
+  @include tablet {
+    justify-content: flex-start;
+    padding-inline: 24px;
+    text-align: center;
+  }
+}
+/* Разные imageKey как модификаторы */
+.differences-slide--item1 {
+  background-image:
+          url('/images/differences/slide-01.png'),
+          $gradient-red,
+          $gradient-violet;
+
+  @include tablet {
+    background-image:
+            url('/images/differences/slide-01-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+}
+
+.differences-slide--item2 {
+  background-image:
+          url('/images/differences/slide-02.png'),
+          $gradient-red,
+          $gradient-violet;
+
+  @include tablet {
+    background-image:
+            url('/images/differences/slide-02-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+}
+
+.differences-slide--item3 {
+  background-image:
+          url('/images/differences/slide-03.png'),
+          $gradient-red,
+          $gradient-violet;
+
+  @include tablet {
+    background-image:
+            url('/images/differences/slide-03-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+}
+
+.differences-slide--item4 {
+  background-image:
+          url('/images/differences/slide-04.png'),
+          $gradient-red,
+          $gradient-violet;
+
+  @include tablet {
+    background-image:
+            url('/images/differences/slide-04-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+}
+
+.differences-slide--item5 {
+  background-image:
+          url('/images/differences/slide-05.png'),
+          $gradient-red,
+          $gradient-violet;
+
+  @include tablet {
+    background-image:
+            url('/images/differences/slide-05-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+}
+
+.differences-slide p {
+  max-width: 270px;
+  font-weight: 500;
+  font-size: clamp(0.875rem, 0.7917rem + 0.1736vw, 1rem);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  opacity: 0.8;
+
+  @include tablet {
+    max-width: 100%;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  & strong {
+    font-weight: 700;
+    font-size: clamp(1rem, 0.9167rem + 0.1736vw, 1.125rem);
+    opacity: 1;
+  }
+}

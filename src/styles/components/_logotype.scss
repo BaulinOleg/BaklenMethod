@@ -1,0 +1,80 @@
+@use "../mixins" as *;
+@use "../variables" as *;
+
+
+.logotype {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+
+  @include mobile {
+    column-gap: 8px;
+  }
+
+  img {
+    @include laptop {
+      width: 116px;
+      height: 46px;
+    }
+
+    @include tablet {
+      width: 80px;
+      height: 34px;
+    }
+  }
+
+  &__text {
+    max-width: 140px;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 1.1;
+
+    @include gradient-text($text-gradient);
+
+    @include laptop {
+      font-size: 13px;
+    }
+
+    @include tablet {
+      max-width: 100px;
+      font-size: 11px;
+      line-height: 1;
+    }
+
+    @include mobile {
+      font-size: 10px;
+    }
+  }
+
+  &--footer {
+    flex-direction: column;
+    align-items: start;
+    row-gap: 24px;
+    margin-bottom: 24px;
+
+    @include mobile {
+      align-items: center;
+      row-gap: 8px;
+    }
+
+    .logotype__text {
+      max-width: 245px;
+      font-size: 18px;
+
+      @include laptop {
+        font-size: 16px;
+      }
+
+      @include tablet {
+        max-width: 200px;
+        font-size: 14px;
+        line-height: 1;
+      }
+
+      @include mobile {
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+  }
+}

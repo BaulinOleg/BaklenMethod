@@ -1,0 +1,62 @@
+@use "../mixins" as *;
+@use "../variables" as *;
+
+.burger {
+  width: 100%;
+  max-width: 300px;
+  margin-inline: auto;
+  border: none;
+  background-color: transparent;
+  z-index: 1000;
+
+
+  &__open-btn {
+    display: none;
+
+    @include tablet {
+      display: flex;
+    }
+  }
+
+  &__open-btn img {
+    @include mobile {
+      width: 34px;
+      height: 10px;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+    padding: 48px 24px;
+    background: $color-dark-glass;
+    backdrop-filter: blur(22px);
+    border-radius: $border-radius-medium;
+
+    @include gradient-border($gradient);
+  }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24px;
+  }
+
+  &__link {
+    &.active {
+      color: $text-gradient;
+    }
+
+    &.active::after {
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $text-gradient;
+    }
+  }
+}

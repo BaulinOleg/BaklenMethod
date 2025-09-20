@@ -1,0 +1,42 @@
+@use "../../mixins" as *;
+@use "../../variables" as *;
+
+
+.consultation {
+  position: relative;
+  padding: 36px 32px;
+  background: $color-dark-glass;
+  backdrop-filter: blur(22px);
+  border-radius: $border-radius-medium;
+
+  @include gradient-border($gradient);
+
+  @include mobile {
+    padding: 32px 24px;
+  }
+
+
+  &__open-btn {
+    padding: 28px 44px;
+    background-color: $bg-color-dark-red;
+    border-radius: $border-radius-small;
+    margin: 0 auto;
+
+    @include pointer-fine-hover {
+      &:hover {
+        background-color: $bg-color-red;
+      }
+    }
+
+    @include mobile {
+      padding: 20px 30px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+  }
+}
+

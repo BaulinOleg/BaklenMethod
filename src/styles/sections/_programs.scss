@@ -1,0 +1,244 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+
+.programs {
+
+  &__title {
+    @include adaptive-title-margin-b;
+  }
+
+  &__inner {
+    margin-bottom: 40px;
+
+    @include mobile {
+      margin-bottom: 24px;
+    }
+
+    &1 .programs__summary,
+    &1 .programs__body .course {
+      background-color: $bg-color-dark-violet;
+      border-radius: $border-radius-small;
+    }
+
+    &2 .programs__summary,
+    &2 .programs__body .course {
+      background-color: $bg-color-gold;
+      border-radius: $border-radius-small;
+    }
+
+    &2 .programs__body .course {
+      background-color: $bg-color-black;
+    }
+
+    &3 .programs__summary,
+    &3 .programs__body .course {
+      background-color: $bg-color-dark-red;
+      border-radius: $border-radius-small;
+    }
+  }
+
+  &__section-title {
+    font-weight: 700;
+    font-size: clamp(1.375rem, 1.0417rem + 0.6944vw, 1.875rem);
+    line-height: 1.09;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 32px;
+
+    @include mobile {
+      margin-bottom: 24px;
+    }
+
+    @include below-mobile {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__summary {
+    @include flex-between-center;
+    padding: 16px 32px;
+
+    @include mobile {
+      padding: 12px 24px;
+    }
+
+    @include below-mobile {
+      padding: 8px 16px;
+    }
+
+    img {
+      transition: transform 0.3s ease;
+      transform: rotate(45deg);
+    }
+  }
+
+  details[open] .programs__summary img {
+    transform: rotate(0deg);
+  }
+
+  &__item:not(:last-of-type) {
+    margin-bottom: 20px;
+  }
+
+  &__item-title {
+    font-weight: 700;
+    font-size: clamp(1.125rem, 0.7917rem + 0.6944vw, 1.625rem);
+    line-height: 1.09;
+  }
+
+  &__body {
+    margin-top: 20px;
+  }
+
+  &__cards {
+    display: grid;
+    gap: 20px;
+
+    /* Авто-определение колонок по количеству карточек */
+    &:has(> :nth-child(3)) {
+      grid-template-columns: repeat(3, 1fr);
+
+      @include laptop {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &:has(> :nth-child(2)):not(:has(> :nth-child(3))) {
+      grid-template-columns: repeat(2, 1fr);
+
+      @include tablet {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    &:has(> :only-child) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__course {
+    width: 100%;
+    padding: 32px;
+
+    @include below-mobile {
+      padding: 32px 16px;
+    }
+  }
+}
+
+.course {
+  display: flex;
+  flex-direction: column;
+
+  h5 {
+    position: relative;
+    font-family: $font-second;
+    font-weight: 700;
+    font-size: clamp(1.375rem, 1.0417rem + 0.6944vw, 1.875rem);
+    line-height: 1.09;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+
+    @include mobile {
+      padding-bottom: 6px;
+    }
+
+    &::after {
+      content: '';
+      width: 100%;
+      max-width: 150px;
+      height: 1px;
+      background-color: $color-light;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 0;
+    }
+  }
+
+  &__info {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+
+    p {
+      font-weight: 400;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    p:last-of-type {
+      margin-bottom: 32px;
+    }
+
+    &:not(:has(.course__list)) p {
+      text-align: center;
+    }
+
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &__prices {
+    p {
+      font-weight: 700;
+      font-size: 30px;
+      opacity: 0.4;
+      text-align: start;
+      text-decoration: line-through;
+      margin-bottom: 0;
+
+      @include below-mobile {
+        font-size: 24px;
+      }
+    }
+
+    p:last-of-type {
+      font-weight: 700;
+      font-size: 24px;
+      opacity: 1;
+      text-align: start;
+      text-decoration: none;
+      margin-bottom: 0;
+
+      @include below-mobile {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__link {
+    padding: 8px 24px;
+    font-weight: 700;
+    font-size: 9px;
+    text-align: center;
+    color: $color-violet-darkest;
+    background-color: $bg-color-light;
+    border-radius: $border-radius-medium;
+
+    @include below-mobile {
+      padding: 8px 16px;
+    }
+  }
+
+  &__footer:not(:has(.course__prices)) .course__link {
+    display: block;
+    margin: 0 auto;
+  }
+}

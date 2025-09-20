@@ -1,0 +1,151 @@
+@use "../../mixins" as *;
+@use "../../variables" as *;
+
+
+.help-slider {
+  margin-top: -120px;
+  padding-top: 328px;
+  padding-inline: 32px;
+  padding-bottom: 64px;
+  background-color: $bg-color-light;
+  border-radius: $border-radius-biggest;
+
+  @include laptop {
+    padding-inline: 20px;
+    padding-bottom: 48px;
+  }
+
+  @include tablet {
+    padding-top: 320px;
+    padding-inline: 16px;
+    padding-bottom: 32px;
+  }
+
+  @include mobile {
+    padding-top: 650px;
+    padding-bottom: 16px;
+  }
+
+
+  &__title {
+    color: $color-dark;
+  }
+
+  &__wrapper {
+
+    .swiper-wrapper {
+      display: flex;
+      align-items: stretch;
+      height: 100%;
+      padding-bottom: 80px;
+
+      @include laptop {
+        padding-bottom: 60px
+      }
+
+      @include mobile {
+        padding-bottom: 36px;
+      }
+    }
+
+    .swiper-slide {
+      height: auto;
+      display: flex;
+      align-items: stretch;
+      border-top: $divider;
+      border-bottom: $divider;
+    }
+
+    .slide-inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      padding: 12px 24px 12px 84px;
+      color: $color-graphite;
+
+      @include laptop {
+        padding-left: 56px;
+        padding-right: 16px;
+      }
+
+      @include tablet {
+        padding-left: 52px;
+        padding-right: 12px;
+      }
+
+      @include mobile {
+        padding-left: 36px;
+        padding-right: 8px;
+      }
+
+      &::before {
+        content: attr(data-index);
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        width: 60px;
+        height: 120px;
+        background: $text-gradient;
+        border-radius: $border-radius-small;
+        font-family: $font-second;
+        font-weight: 700;
+        font-size: clamp(2rem, -1.5rem + 4.375vw, 3.75rem);
+        line-height: 1;
+        color: $color-dark-grey;
+
+        @include flex-center;
+
+        @include laptop {
+          width: 40px;
+          height: 100px;
+        }
+
+        @include mobile {
+          width: 24px;
+          height: 60px;
+          font-size: 24px;
+        }
+      }
+
+      h3 {
+        font-weight: 700;
+        font-size: clamp(1rem, 0.75rem + 0.3125vw, 1.125rem);
+        margin-bottom: 12px;
+
+        @include mobile {
+          font-size: 14px;
+          margin-bottom: 6px;
+        }
+      }
+
+      p {
+        font-weight: 600;
+        font-size: clamp(0.875rem, 0.625rem + 0.3125vw, 1rem);
+        opacity: 0.5;
+
+        @include mobile {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .swiper-pagination-bullet {
+      width: var(--swiper-pagination-bullet-size);
+      height: var(--swiper-pagination-bullet-size);
+      margin: 0 var(--swiper-pagination-bullet-horizontal-gap);
+    }
+
+    .swiper-pagination-bullet:focus {
+      outline: 2px solid $color-dark;
+      outline-offset: 2px;
+    }
+
+    .swiper-pagination-bullet:focus-visible {
+      opacity: 1 !important;
+      background-color: $color-gold;
+    }
+  }
+}

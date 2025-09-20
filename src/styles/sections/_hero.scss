@@ -1,0 +1,193 @@
+@use "../mixins" as *;
+@use "../variables" as *;
+
+
+.hero {
+
+  &__title {
+    padding-top: 100px;
+    padding-bottom: 36px;
+    background:
+            url("/images/hero/hero-big.png") right top / contain no-repeat,
+            url("/images/hero/hero-elipse.png") center -80px / contain no-repeat;
+
+    @include laptop {
+      background:
+              url("/images/hero/hero-big.png") calc(100% - 80px) top / contain no-repeat,
+              url("/images/hero/hero-elipse.png") center -80px / contain no-repeat;
+    }
+
+    @include tablet {
+      background:
+              url("/images/hero/hero-medium.png") calc(100% - 80px) top / contain no-repeat,
+              url("/images/hero/hero-elipse.png") center -80px / contain no-repeat;
+    }
+
+    @include mobile {
+      @include flex-column-center;
+      padding-top: 64px;
+      text-align: center;
+      background:
+              url("/images/hero/hero-medium.png") center bottom / auto 480px no-repeat,
+              url("/images/hero/hero-elipse.png") center 60% / 450px auto no-repeat;
+    }
+
+    @include below-mobile {
+      padding-top: 48px;
+      background:
+              url("/images/hero/hero-medium.png") center bottom / auto 480px no-repeat,
+              url("/images/hero/hero-elipse.png") center 60% / 400px auto no-repeat;
+    }
+
+    h1 {
+      font-family: $font-fifth;
+      font-weight: 700;
+      font-size: clamp(3.25rem, 0.9583rem + 4.7743vw, 6.6875rem);
+      line-height: 0.9;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+
+      @include below-mobile {
+        font-size: 46px;
+      }
+    }
+
+    h1 span {
+      padding-left: clamp(4.5rem, 2.6667rem + 3.8194vw, 7.25rem);
+
+      @include mobile {
+        padding-left: 0;
+      }
+    }
+
+    p:not(:last-child) {
+      font-family: $font-fifth;
+      font-weight: 500;
+      font-size: clamp(1rem, 0.375rem + 1.3021vw, 1.9375rem);
+    }
+  }
+
+  &__slogan {
+    font-family: $font-fourth;
+    font-weight: 400;
+    font-size: clamp(3.25rem, 1.625rem + 3.3854vw, 5.6875rem);
+    line-height: 1.8;
+    @include gradient-text($text-gradient);
+    transform: rotate(-4deg);
+    margin: 0 0 32px -24px;
+
+    @include mobile {
+      padding-bottom: 358px;
+      font-size: 46px;
+      transform: rotate(0);
+      margin: 0;
+    }
+
+    @include below-mobile {
+      font-size: 40px;
+    }
+  }
+
+  &__subtitle {
+    position: relative;
+    padding: 0 0 24px 24px;
+    max-width: clamp(20.25rem, 12.5833rem + 15.9722vw, 31.75rem);
+    line-height: 1;
+
+    @include mobile {
+      padding: 0;
+    }
+
+    &::before {
+      content: url("/images/hero/arrow-down-right.png");
+      position: absolute;
+      left: 0;
+      bottom: -12px;
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    p {
+      font-weight: 700;
+      font-size: clamp(1.25rem, 0.7917rem + 0.9549vw, 1.9375rem);
+      text-transform: uppercase;
+    }
+
+    p span {
+      font-weight: 600;
+      font-size: clamp(1rem, 0.75rem + 0.5208vw, 1.375rem);
+      text-transform: lowercase;
+      opacity: 0.5;
+
+      @include mobile {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__list {
+    @include flex-center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 48px;
+
+    @include mobile {
+      @include flex-column-center;
+    }
+
+    @include below-mobile {
+      margin-bottom: 36px;
+    }
+  }
+
+  &__list-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 225px;
+    min-height: 90px;
+    padding: 8px 12px 8px 44px;
+    background-color: $bg-color-alabaster-white;
+    border-radius: $border-radius-medium;
+
+    @include laptop {
+      max-width: 200px;
+      min-height: 80px;
+      padding-left: 36px;
+    }
+
+    @include mobile {
+      max-width: 380px;
+      min-height: 60px;
+      border-radius: $border-radius-small;
+    }
+
+    &::before {
+      content: '';
+      display: block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $bg-color-violet;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 17px;
+
+      @include laptop {
+        width: 8px;
+        height: 8px;
+        left: 14px;
+      }
+    }
+
+    p {
+      font-weight: 600;
+      font-size: 14px;
+      color: $color-dark;
+    }
+  }
+}

@@ -1,0 +1,146 @@
+//flex
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+//color
+@mixin gradient-text($text-gradient) {
+  background: $text-gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin gradient-border($gradient) {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: $gradient;
+    //noinspection CssInvalidPropertyValue
+    -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    //noinspection CssInvalidPropertyValue
+    -webkit-mask-composite: destination-out;
+    //noinspection CssInvalidPropertyValue
+    mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+    //noinspection CssInvalidPropertyValue
+    mask-composite: subtract;
+    pointer-events: none;
+    z-index: -1;
+  }
+}
+
+//adaptive
+@mixin above-laptop {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (max-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin below-mobile {
+  @media (max-width: 425px) {
+    @content;
+  }
+}
+
+@mixin pointer-fine-hover {
+  @media (pointer: fine) and (hover: hover) {
+    @content;
+  }
+}
+
+@mixin adaptive-scroll-margin {
+  scroll-margin-top: 100px;
+
+  @include laptop {
+    scroll-margin-top: 78px;
+  }
+
+  @include tablet {
+    scroll-margin-top: 58px;
+  }
+
+  @include mobile {
+    scroll-margin-top: 50px;
+  }
+}
+
+@mixin adaptive-section-margin-b {
+  & {
+    margin-bottom: 100px;
+  }
+
+  @include laptop {
+    margin-bottom: 80px;
+  }
+
+  @include tablet {
+    margin-bottom: 68px;
+  }
+
+  @include mobile {
+    margin-bottom: 48px;
+  }
+
+  @include below-mobile {
+    margin-bottom: 36px;
+  }
+}
+
+@mixin adaptive-title-margin-b {
+  margin-bottom: 88px;
+
+  @include laptop {
+    margin-bottom: 64px;
+  }
+
+  @include tablet {
+    margin-bottom: 48px;
+  }
+
+  @include mobile {
+    margin-bottom: 36px;
+  }
+
+  @include below-mobile {
+    margin-bottom: 24px;
+  }
+}

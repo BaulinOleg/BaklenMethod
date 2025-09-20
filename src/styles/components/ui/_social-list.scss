@@ -1,0 +1,18 @@
+@use "../../mixins" as *;
+@use "../../variables" as *;
+
+
+.social-list {
+  @include flex-center;
+  column-gap: 30px;
+
+  &__item a {
+    color: $color-white-glass;
+
+    @include pointer-fine-hover {
+      &:hover svg {
+        color: $color-gold;
+      }
+    }
+  }
+}

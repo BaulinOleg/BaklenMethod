@@ -1,0 +1,99 @@
+@use "../../mixins" as *;
+@use "../../variables" as *;
+
+
+.reviews-block {
+  @include flex-column-center;
+
+  padding: 64px 32px;
+  background-color: $bg-color-light;
+  border-radius: $border-radius-biggest;
+
+  @include laptop {
+    padding: 40px 20px;
+  }
+
+  @include tablet {
+    padding: 32px 16px;
+  }
+
+  @include below-mobile {
+    padding-inline: 8px;
+  }
+}
+
+.reviews-slider {
+  padding-inline: 8px;
+
+  h2 {
+    color: $color-dark;
+    margin-bottom: 12px;
+  }
+
+  h2 span {
+    color: $color-red;
+  }
+
+  p {
+    font-weight: 700;
+    font-size: clamp(1rem, 0.7143rem + 0.4464vw, 1.25rem);
+    letter-spacing: 0.21em;
+    text-transform: lowercase;
+    text-align: center;
+    color: $color-dark;
+    opacity: 0.4;
+  }
+
+  &__wrapper {
+    position: relative;
+    max-width: calc(980px + var(--slider-padding-x) * 2);
+    padding-inline: var(--slider-padding-x);
+    margin-inline: auto;
+    margin-bottom: 64px;
+
+    @include laptop {
+      max-width: 620px;
+      padding-inline: 0;
+      padding-bottom: 72px;
+      margin-bottom: 40px;
+    }
+
+    @include mobile {
+      max-width: 300px;
+      padding-bottom: 60px;
+      margin-bottom: 32px;
+    }
+
+    .slide-inner {
+      @include flex-column-center;
+
+      width: 100%;
+    }
+  }
+
+  &__image {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 3 / 5;
+
+    @include below-mobile {
+      max-width: 280px;
+    }
+  }
+
+  &__image img {
+    border-radius: $border-radius-medium;
+  }
+
+  &__btn-prev,
+  &__btn-next {
+    color: $color-dark-red;
+
+    @include pointer-fine-hover {
+      &:hover {
+        color: $color-red;
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@use "../../mixins" as *;
+@use "../../variables" as *;
+
+
+.review {
+  position: relative;
+  padding: 36px 32px;
+  background: $color-dark-glass;
+  backdrop-filter: blur(22px);
+  border-radius: $border-radius-medium;
+
+  @include gradient-border($gradient);
+  @include mobile {
+    padding: 32px 24px;
+  }
+
+  &__open-btn {
+    @include flex-center;
+    width: 100%;
+    max-width: 300px;
+    padding: 28px 44px;
+    background-color: $bg-color-dark-red;
+    border-radius: $border-radius-small;
+
+    @include pointer-fine-hover {
+      &:hover {
+        background-color: $bg-color-red;
+      }
+    }
+
+    @include mobile {
+      padding: 20px 30px;
+    }
+
+    @include below-mobile {
+      max-width: 280px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+  }
+}
+

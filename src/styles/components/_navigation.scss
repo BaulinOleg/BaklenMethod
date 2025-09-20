@@ -1,0 +1,19 @@
+@use "../mixins" as *;
+@use "../variables" as *;
+
+
+.nav {
+
+  &__list {
+    display: flex;
+    align-items: center;
+    column-gap: 30px;
+  }
+
+  &__link {
+    font-weight: 500;
+    font-size: 14px;
+    color: $color-light;
+    opacity: 0.6;
+  }
+}

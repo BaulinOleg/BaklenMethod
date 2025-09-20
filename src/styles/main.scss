@@ -1,0 +1,34 @@
+@use "fonts";
+@use "mixins";
+@use "variables";
+@use "globals";
+@use "utils";
+
+@use '@/styles/components/header';
+@use '@/styles/components/logotype';
+@use '@/styles/components/navigation';
+@use '@/styles/components/burger';
+@use '@/styles/components/footer';
+
+@use '@/styles/sections/hero';
+@use "@/styles/sections/method";
+@use "@/styles/sections/differences";
+@use "@/styles/sections/aspects";
+@use "@/styles/sections/whom";
+@use "@/styles/sections/author";
+@use "@/styles/sections/programs";
+@use "@/styles/sections/contacts";
+
+@use '@/styles/components/sliders/articles-slider';
+@use '@/styles/components/sliders/goods-slider';
+@use '@/styles/components/sliders/help-slider';
+@use '@/styles/components/sliders/reviews-slider';
+@use '@/styles/components/sliders/team-slider';
+@use "@/styles/components/sliders/differences-slider";
+@use "@/styles/components/sliders/circle-slider";
+@use "@/styles/components/sliders/transformations-slider";
+
+@use '@/styles/components/ui/social-list';
+@use '@/styles/components/ui/form';
+@use '@/styles/components/popup/consultation';
+@use '@/styles/components/popup/review';

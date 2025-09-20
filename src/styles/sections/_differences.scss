@@ -1,0 +1,276 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+
+.differences {
+  @include adaptive-section-margin-b;
+
+  &__title {
+    @include adaptive-title-margin-b;
+
+    & span {
+      text-wrap: nowrap;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 60px;
+
+    @include adaptive-title-margin-b;
+
+    @include laptop {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 40px;
+    }
+
+    @include tablet {
+      column-gap: 20px;
+    }
+
+    @include mobile {
+      @include flex-center;
+    }
+  }
+
+  &__accordion-list {
+    flex-grow: 1;
+    border-top: $divider;
+
+    @include mobile {
+      max-width: 380px;
+    }
+  }
+
+  &__accordion-title {
+    position: relative;
+    padding: 24px 55px 24px 0;
+    cursor: pointer;
+    border-bottom: $divider;
+    transition: color 0.3s ease;
+
+    @include pointer-fine-hover {
+      &:hover {
+        color: $color-gold;
+      }
+    }
+
+    &::after {
+      content: '';
+      display: none;
+      width: 45px;
+      height: 23px;
+      background-image: url("/icons/arrow.svg");
+      position: absolute;
+      bottom: 50%;
+      transform: translateY(50%);
+      right: 0;
+
+      @include mobile {
+        width: 23px;
+        height: 27px;
+        background-image: url("/icons/arrow-s.svg");
+      }
+    }
+
+    & h3 {
+      font-family: $font-third;
+      font-weight: 400;
+      font-size: clamp(1.625rem, 1.3333rem + 0.6076vw, 2.0625rem);
+      text-transform: uppercase;
+
+      @include below-mobile {
+        font-size: 22px;
+      }
+    }
+  }
+
+  &__accordion-body {
+    position: relative;
+    display: none;
+    min-height: 555px;
+    padding: 32px 24px;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background-repeat: no-repeat;
+    background-size: auto, 100% 100%, 100% 100%;
+    background-position: right bottom, center, center;
+    border-radius: $border-radius-small;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 113px;
+      height: 10px;
+      background-image: url("/images/logotype/logo-s.png");
+      position: absolute;
+      left: 24px;
+      bottom: 32px;
+
+      @include below-mobile {
+        left: 16px;
+        bottom: 24px;
+      }
+    }
+
+    @include mobile {
+      display: block;
+    }
+
+    @include below-mobile {
+      padding: 24px 16px;
+    }
+
+    & p {
+      font-weight: 500;
+      font-size: clamp(0.75rem, 0.6607rem + 0.4464vw, 0.875rem);
+      opacity: 0.8;
+
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+
+      & strong {
+        font-weight: 700;
+        font-size: clamp(0.875rem, 0.7857rem + 0.4464vw, 1rem);
+        opacity: 1;
+      }
+    }
+  }
+
+  /* Разные imageKey как модификаторы */
+  &__accordion-body--item1 {
+    background-image:
+            url('/images/differences/slide-01-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+
+  &__accordion-body--item2 {
+    background-image:
+            url('/images/differences/slide-02-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+
+  &__accordion-body--item3 {
+    background-image:
+            url('/images/differences/slide-03-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+
+  &__accordion-body--item4 {
+    background-image:
+            url('/images/differences/slide-04-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+
+  &__accordion-body--item5 {
+    background-image:
+            url('/images/differences/slide-05-mobile.png'),
+            $gradient-red,
+            $gradient-violet;
+  }
+
+  &__accordion.is-active .differences__accordion-title {
+    & h3 {
+      font-weight: 700;
+      color: $color-gold;
+    }
+
+    &::after {
+      display: block;
+    }
+  }
+
+  &__accordion[open] {
+    .differences__accordion-title {
+
+      @include mobile {
+        border-bottom: none;
+
+        &::after {
+          transform: translateY(50%) rotate(180deg);
+        }
+      }
+    }
+  }
+
+  &__conclusion {
+    position: relative;
+    max-width: 82.63%;
+    padding-inline: 126px;
+    margin-inline: auto;
+    text-align: center;
+
+    @include tablet {
+      max-width: 100%;
+    }
+
+    @include mobile {
+      padding-top: 40px;
+      padding-inline: 24px;
+    }
+
+    @include below-mobile {
+      padding-inline: 0;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 63px;
+      height: 20px;
+      background-image: url("/images/differences/decor-s.png");
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &::before {
+      left: 0;
+
+      @include mobile {
+        width: 105px;
+        height: 19px;
+        background-image: url("/images/differences/decor-b.png");
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
+    &::after {
+      right: 0;
+      transform: translateY(-50%) rotate(180deg);
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    & p {
+      font-weight: 700;
+      font-size: clamp(1rem, 0.5833rem + 0.8681vw, 1.625rem);
+
+      @include below-mobile {
+        font-size: 14px;
+      }
+
+      & span {
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+
+
+
+
+

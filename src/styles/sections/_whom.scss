@@ -1,0 +1,154 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+
+.whom {
+  z-index: 10;
+  margin-top: -230px;
+
+  @include laptop {
+    margin-top: -152px;
+  }
+
+  @include tablet {
+    margin-top: -132px;
+  }
+
+  @include mobile {
+    margin-top: 0;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+
+    @include laptop {
+      column-gap: 20px;
+    }
+
+    @include tablet {
+      grid-template-columns: 1fr;
+      row-gap: 60px;
+    }
+
+    @include mobile {
+      row-gap: 36px;
+    }
+  }
+
+  &__list {
+    padding: 40px;
+    border-radius: $border-radius-big;
+
+    @include laptop {
+      padding: 40px 36px;
+    }
+
+    @include mobile {
+      padding: 32px 16px;
+    }
+
+    @include below-mobile {
+      padding: 32px 8px;
+    }
+  }
+
+  &__fits {
+    background-color: $bg-color-dark-violet;
+  }
+
+  &__no-fits {
+    background:
+            $gradient-dark,
+            $bg-color-dark;
+  }
+
+  &__title {
+    text-align: center;
+    text-wrap: nowrap;
+    margin-bottom: 32px;
+
+    span {
+      display: inline-block;
+
+      img {
+        width: clamp(2.8125rem, 1.1458rem + 3.4722vw, 5.3125rem);
+        height: clamp(1.875rem, 0.8333rem + 2.1701vw, 3.4375rem);
+      }
+    }
+  }
+
+  &__summary {
+    @include flex-between-center;
+
+    img {
+      transition: transform 0.3s ease;
+      transform: rotate(45deg);
+    }
+  }
+
+  details[open] .whom__summary img {
+    transform: rotate(0deg);
+  }
+
+  &__item {
+    padding: 24px 0;
+    border-bottom: $divider-light;
+
+    @include tablet {
+      padding: 20px 0;
+    }
+
+    &:first-of-type {
+      border-top: $divider-light;
+    }
+  }
+
+  &__item-title {
+    max-width: 88%;
+    font-weight: 700;
+    font-size: clamp(1.125rem, 0.9583rem + 0.3472vw, 1.375rem);
+    letter-spacing: 0.1em;
+
+    @include below-mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__body {
+    max-width: 90%;
+    padding-top: 24px;
+    font-size: clamp(1rem, 0.9167rem + 0.1736vw, 1.125rem);
+
+    @include tablet {
+      padding-top: 16px;
+    }
+
+    @include below-mobile {
+      font-size: 14px;
+    }
+
+    h4 {
+      font-weight: 700;
+      letter-spacing: 0.17em;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-weight: 400;
+
+      @include mobile {
+        font-size: 14px;
+      }
+
+      &:not(:last-of-type) {
+        margin-bottom: 20px;
+
+        @include tablet {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+}

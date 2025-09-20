@@ -1,0 +1,262 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+
+.method {
+  @include adaptive-section-margin-b;
+
+  &__wrapper {
+    position: relative;
+    padding-top: clamp(2rem, -0.3333rem + 4.8611vw, 5.5rem);
+    padding-bottom: 176px;
+    background: url("/images/method/method-man.png") right bottom / contain no-repeat,
+    url("/images/method/method-elipse.png") top left / contain no-repeat,
+    linear-gradient(180deg, #3e0d43 0%, #27042b 100%) center center / cover no-repeat;
+    border-radius: $border-radius-big;
+    z-index: 10;
+
+    @include tablet {
+      padding-bottom: 124px;
+      background: url("/images/method/method-man-s.png") right bottom / auto 420px no-repeat,
+      url("/images/method/method-elipse-s.png") top left / contain no-repeat,
+      linear-gradient(180deg, #3e0d43 0%, #27042b 100%) center center / cover no-repeat;
+    }
+
+    @include mobile {
+      padding-bottom: 414px;
+      background: url("/images/method/method-man-s.png") right bottom / auto 460px no-repeat,
+      url("/images/method/method-elipse-s.png") top left / contain no-repeat,
+      linear-gradient(180deg, #3e0d43 0%, #27042b 100%) center center / cover no-repeat;
+    }
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__title {
+    font-size: clamp(1.875rem, 0.625rem + 2.6042vw, 3.75rem);
+    line-height: 1.05;
+    text-align: start;
+    margin-bottom: clamp(1.25rem, 0.4167rem + 1.7361vw, 2.5rem);
+
+    @include mobile {
+      text-align: center;
+    }
+
+    & span {
+      position: relative;
+      display: inline-block;
+      padding-right: clamp(13.875rem, 2.7917rem + 23.0903vw, 30.5rem);
+
+      @include gradient-text($text-gradient);
+
+      @include below-mobile {
+        padding-right: 144px;
+      }
+
+      & img {
+        position: absolute;
+        width: clamp(13.875rem, 2.7917rem + 23.0903vw, 30.5rem);
+        height: auto;
+        top: -0.3em;
+        right: 0;
+
+        @include below-mobile {
+          width: 144px;
+          top: 0.075em;
+        }
+      }
+    }
+  }
+
+  &__text {
+    width: 61.69%;
+
+    @include laptop {
+      width: calc(50% - 10px);
+    }
+
+    @include mobile {
+      width: 100%;
+      text-align: center;
+    }
+
+    p {
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    p:not(:first-child) {
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 1.29;
+    }
+
+    p:not(:last-child) {
+      margin-bottom: 12px;
+    }
+  }
+
+  &__nav {
+    position: absolute;
+    width: 100%;
+    max-width: 570px;
+    left: 0;
+    top: calc(100% + 40px);
+
+    @include tablet {
+      max-width: 556px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    @include mobile {
+      top: calc(100% + 440px);
+    }
+  }
+
+  &__nav-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+
+    @include tablet {
+      column-gap: 16px;
+    }
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      row-gap: 16px;
+    }
+  }
+
+  &__nav-item:not(:last-child) {
+    margin-bottom: 30px;
+
+    @include tablet {
+      margin-bottom: 16px;
+    }
+
+    @include mobile {
+      margin-bottom: 0;
+    }
+  }
+
+  &__nav-link {
+    width: 100%;
+    padding: 12px;
+    font-weight: 600;
+    font-size: clamp(0.875rem, 0.75rem + 0.2604vw, 1.0625rem);
+    text-align: center;
+    color: $color-violet-dark;
+    background-color: $bg-color-light;
+    border-radius: $border-radius-small;
+    box-shadow: 0 39px 44px 0 rgba(0, 0, 0, 0.11);
+
+    @include flex-center;
+
+    @include pointer-fine-hover {
+      &:hover {
+        color: $color-light;
+        background-color: $color-red;
+      }
+    }
+  }
+
+  &__author {
+    position: absolute;
+    right: 36px;
+    bottom: 77%;
+    width: 100%;
+    max-width: 240px;
+    text-align: center;
+
+    @include tablet {
+      right: 3%;
+      bottom: 34%;
+    }
+
+    @include mobile {
+      right: 50%;
+      transform: translateX(50%);
+      bottom: 32px;
+    }
+
+    & p {
+      font-weight: 600;
+      font-size: clamp(0.75rem, 0.5833rem + 0.3472vw, 1rem);
+      opacity: 0.4;
+    }
+
+    & p:not(:last-child) {
+      position: relative;
+      padding-top: 32px;
+      font-weight: 700;
+      font-size: clamp(0.875rem, 0.625rem + 0.5208vw, 1.25rem);
+      opacity: 1;
+
+      @include tablet {
+        padding-top: 22px;
+      }
+
+      &::before {
+        content: '';
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: $color-light;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        @include tablet {
+          width: 8px;
+          height: 8px;
+        }
+      }
+    }
+  }
+
+  &__slogan {
+    position: absolute;
+    right: 6%;
+    bottom: 10%;
+    width: 100%;
+    max-width: 300px;
+    padding: 32px 36px;
+    text-align: center;
+    background-color: $color-dark-glass;
+    border-radius: $border-radius-small;
+
+    @include gradient-border($gradient);
+
+    @include laptop {
+      right: 7%;
+      max-width: 246px;
+    }
+
+    @include tablet {
+      right: 3%;
+      bottom: 78%;
+      padding: 12px 16px;
+    }
+
+    @include mobile {
+      right: 50%;
+      transform: translateX(50%);
+      bottom: 156px;
+    }
+
+    & p {
+      font-weight: 700;
+      font-size: clamp(0.625rem, 0.4167rem + 0.434vw, 0.9375rem);
+
+      @include mobile {
+        font-size: 14px;
+      }
+    }
+  }
+}

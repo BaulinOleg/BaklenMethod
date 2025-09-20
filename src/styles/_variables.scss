@@ -1,0 +1,105 @@
+@use 'mixins' as *;
+
+$font-main: 'Montserrat', sans-serif;
+$font-second: "Bebas Neue Bold", sans-serif;
+$font-third: 'Bebas Neue Book', sans-serif;
+$font-fourth: "Streamster(RUS BY LYAJKA)", sans-serif;
+$font-fifth: "Akzidenz-Grotesk Pro Bold Ext", sans-serif;
+
+$color-light: #F6F6F6;
+$color-gold: #C9BB8B;
+$color-light-pink: #DAC6DD;
+$color-red: #A70100;
+$color-dark-red: #6A0003;
+$color-violet-light: #B808CE;
+$color-violet: #6D0977;
+$color-violet-dark: #3E0D43;
+$color-violet-darkest: #27042B;
+$color-grey: #757575;
+$color-graphite: #2F2F2F;
+$color-dark: #101010;
+$color-dim-grey: rgba(95, 95, 95, 0.4);
+$color-dark-grey: rgba(57, 57, 57, 0.2);
+$color-white-glass: rgba(255, 255, 255, 0.72);
+$color-dark-glass: rgba(0, 0, 0, 0.44);
+$text-gradient: linear-gradient(187deg, #C9BB8B 0%, #928457 100%);
+
+$bg-color-alabaster-white: #FAFAFA;
+$bg-color-light: #FCFCFC;
+$bg-color-light-grey: #D9D9D9;
+$bg-color-red: #A70100;
+$bg-color-dark-red: #6A0003;
+$bg-color-violet: #6D0977;
+$bg-color-dark-violet: #3E0D43;
+$bg-color-darkest-violet: #300E33;
+$bg-color-dark: #101010;
+$bg-color-black: #292929;
+$bg-color-gold: #928457;
+
+$gradient: linear-gradient(109deg, rgba(184, 8, 206, 0) 0%, rgba(184, 8, 206, 1) 100%);
+$gradient-red: linear-gradient(154deg, #6a0003 0%, rgba(106, 0, 3, 0) 100%);
+$gradient-violet: linear-gradient(180deg, #3e0d43 0%, #27042b 100%);
+$gradient-dark: linear-gradient(301deg, #1B1B1B 0%, rgba(27, 27, 27, 0) 100%);
+
+$petal-colors: (
+        #652E6C,
+        #421733,
+        #C9CAEC,
+        #8083BD,
+        #5E3D88,
+        #6C1232,
+        #AE5F7B,
+        #E8C9EC
+);
+
+$swiper-navigation-size: 40px;
+$swiper-pagination-bullet-horizontal-gap: 36px;
+$swiper-pagination-bullet-size: 16px;
+
+$divider: 1px solid $color-dim-grey;
+$divider-light: 1px solid $color-light;
+
+$border-radius-small: 10px;
+$border-radius-medium: 20px;
+$border-radius-big: clamp(1rem, 0.4rem + 3vw, 4rem);
+$border-radius-biggest: clamp(1rem, -0.3rem + 6.5vw, 7.5rem);
+
+
+:root {
+  --swiper-pagination-color: #{$color-gold};
+  --swiper-navigation-size: #{$swiper-navigation-size};
+  --swiper-pagination-bullet-horizontal-gap: #{$swiper-pagination-bullet-horizontal-gap};
+  --swiper-pagination-bullet-size: #{$swiper-pagination-bullet-size};
+
+  --transition-duration: 0.3s;
+
+  --container-width: 1180px;
+  --container-padding-x: 44px;
+
+  --container-wide-width: 1920px;
+  --container-wide-padding-x: clamp(1.25rem, -6.25rem + 7.5vw, 2.75rem);
+
+  --container-wide-s: 1600px;
+
+  --slider-padding-x: 96px;
+
+  @include laptop {
+    --swiper-pagination-bullet-horizontal-gap: 24px;
+  }
+
+  @include tablet {
+    --swiper-pagination-bullet-horizontal-gap: 16px;
+  }
+
+  @include mobile {
+    --container-padding-x: 36px;
+    --swiper-pagination-bullet-size: 12px;
+  }
+
+  @include below-mobile {
+    --container-padding-x: 20px;
+    --container-wide-padding-x: 10px;
+  }
+}
+
+

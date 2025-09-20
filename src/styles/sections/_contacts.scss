@@ -1,0 +1,188 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+
+.contacts {
+  width: 100%;
+  max-width: 1920px;
+  margin-inline: auto;
+  margin-bottom: 0;
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include mobile {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  &__map {
+    width: 100%;
+    height: 500px;
+
+    @include mobile {
+      height: 350px;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    padding: 64px;
+    background-color: $bg-color-dark-violet;
+
+    @include below-mobile {
+      padding: 24px;
+    }
+
+    h2 {
+      text-align: start;
+      @include adaptive-title-margin-b;
+
+      @include mobile {
+        text-align: center;
+      }
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+
+    @include mobile {
+      align-items: center;
+    }
+  }
+
+  &__links,
+  &__address {
+    font-style: normal;
+    font-weight: 500;
+    font-size: clamp(1.125rem, 0.9583rem + 0.3472vw, 1.375rem);
+    letter-spacing: 0.06em;
+    color: $color-white-glass;
+  }
+
+  &__link {
+    @include pointer-fine-hover {
+      &:hover {
+        color: $color-gold;
+      }
+    }
+  }
+
+  &__address {
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  &__social {
+    margin-top: 20px;
+    justify-content: start !important;
+
+    @include mobile {
+      justify-content: center !important;
+    }
+  }
+
+  &__slogan-inner {
+    width: 100%;
+    min-height: 880px;
+    @include flex-center;
+    flex-direction: column;
+    row-gap: 75px;
+    background:
+            url("/images/contacts/contacts-man.png") 45% 43% / auto no-repeat,
+            url("/images/contacts/group-elipses.png") center center / auto no-repeat;
+
+    @include tablet {
+      min-height: 700px;
+      row-gap: 32px;
+      background:
+              url("/images/contacts/contacts-man.png") 45% 43% / cover no-repeat,
+              url("/images/contacts/group-elipses.png") center center / cover no-repeat;
+    }
+
+    @include mobile {
+      min-height: clamp(21.875rem, 6.25rem + 78.125vw, 43.75rem);
+      justify-content: flex-end;
+      padding-bottom: 56px;
+      background:
+              url("/images/contacts/contacts-man.png") 40% bottom / cover no-repeat,
+              url("/images/contacts/group-elipses.png") center center / cover no-repeat;
+    }
+
+    @include below-mobile {
+      background:
+              url("/images/contacts/contacts-man.png") 30% bottom / cover no-repeat,
+              url("/images/contacts/group-elipses.png") center center / cover no-repeat;
+    }
+  }
+
+  &__slogan {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-family: $font-second;
+    font-weight: 700;
+    font-size: clamp(2rem, 1.5455rem + 2.2727vw, 3rem);
+
+    @include tablet {
+      max-width: 300px;
+    }
+
+    &::before {
+      content: '\201C';
+      font-size: 6em;
+      position: absolute;
+      top: -66%;
+      left: -28%;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: '\201D';
+      font-size: 3.175em;
+      position: absolute;
+      right: -20%;
+      bottom: -66%;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    p {
+
+      &:first-child {
+        text-align: start;
+        margin-left: -36px;
+
+        @include tablet {
+          margin-left: 0;
+        }
+      }
+
+      &:last-child {
+        text-align: end;
+        margin-right: -36px;
+
+        @include tablet {
+          margin-right: 0;
+        }
+      }
+
+      span {
+        background-color: $color-red;
+      }
+    }
+  }
+}

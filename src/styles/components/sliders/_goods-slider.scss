@@ -1,0 +1,106 @@
+@use "../../mixins" as *;
+@use "../../variables" as *;
+
+
+.goods-slider__wrapper {
+  position: relative;
+  width: 100%;
+  max-width: calc(1130px + var(--slider-padding-x) * 2);
+  padding-inline: var(--slider-padding-x);
+  margin-inline: auto;
+
+  @include laptop {
+    max-width: 1090px;
+    padding-inline: 0;
+    padding-bottom: 72px;
+  }
+
+  @include tablet {
+    max-width: 720px;
+  }
+
+  @include mobile {
+    max-width: 350px;
+    padding-bottom: 60px;
+  }
+
+  .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    height: auto;
+    display: flex;
+    align-items: stretch;
+  }
+}
+
+.goods-slide {
+  @include flex-column-center;
+
+  width: 100%;
+  font-weight: 600;
+  background-color: $bg-color-dark;
+  border-radius: $border-radius-medium;
+
+  &__image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 350 / 258;
+    background-color: $bg-color-dark-red;
+    border-radius: $border-radius-medium $border-radius-medium 0 0;
+  }
+
+  &__image img {
+    border-radius: $border-radius-medium $border-radius-medium 0 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 24px;
+    color: $color-light;
+    background-color: $bg-color-dark-red;
+    border-radius: 0 0 $border-radius-medium $border-radius-medium;
+
+    @include below-mobile {
+      padding: 16px;
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.09;
+    margin-bottom: 4px;
+  }
+
+  &__desc {
+    font-weight: 400;
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 24px;
+  }
+
+  &__inner {
+    @include flex-between-center;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+  }
+}
+
+.goods-slider__btn-prev,
+.goods-slider__btn-next {
+  color: $color-dark-red;
+
+  @include pointer-fine-hover {
+    &:hover {
+      color: $color-red;
+    }
+  }
+}
